@@ -1,0 +1,18 @@
+---
+- name: Gestionar docker 
+  hosts: vm
+  become: true
+  tasks:
+    - name: Instalar paquete python docker
+      ansible.builtin.pip:
+        name: docker
+        state: present
+
+    - name: Create a data container
+      community.docker.docker_container:
+        name: web-alpine
+        image: sdelrio/docker-minimal-nginx
+        state: started
+        ports:
+          - "8080:8080"
+          

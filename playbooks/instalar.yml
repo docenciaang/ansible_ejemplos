@@ -1,0 +1,12 @@
+---
+######################################
+# cambiar htop por el paquete a instalar
+######################################
+- name: instalar paquete con apt
+  hosts: vm
+  become: true
+  tasks:
+    - name: instala paquete
+      ansible.builtin.apt:
+        name: htop
+        state: present

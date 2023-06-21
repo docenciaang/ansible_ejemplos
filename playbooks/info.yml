@@ -1,0 +1,16 @@
+---
+- name: Get hostname of remote server
+  hosts: vm
+  gather_facts: yes
+  tasks:
+    - name: Display hostname
+      ansible.builtin.debug:
+        var: ansible_hostname
+
+    - name: Display all interfaces name
+      debug:
+        var: ansible_facts.interfaces
+        
+    - name: Get configuration and state data in JSON format
+      ansible.netcommon.netconf_get:
+        display: json

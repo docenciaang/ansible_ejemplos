@@ -1,0 +1,22 @@
+---
+######################################33
+# Cambiar "password123" por una pass real
+######################################
+- name: Gestion de usuario
+  hosts: vm
+  become: true
+  tasks:
+    - name: crear grupo
+      ansible.builtin.group:
+        name: daw  #pasar a variables
+        state: present
+
+    - name: alta de un usuario
+      ansible.builtin.user:
+        name: luis
+        state: present
+        create_home: true
+        password: Aqui hash de password
+        shell: /bin/bash
+        groups:
+          - daw

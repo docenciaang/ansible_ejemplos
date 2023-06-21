@@ -1,0 +1,11 @@
+---
+- hosts: etg
+  become: yes
+  tasks:
+    - name: Actualizar la lista de paquetes
+      apt:
+        update_cache: yes
+
+    - name: Actualizar todos los paquetes a la última versión
+      apt:
+        upgrade: dist

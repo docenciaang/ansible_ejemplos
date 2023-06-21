@@ -1,0 +1,8 @@
+---
+- hosts: etg
+  become: yes
+  tasks:
+    - name: Delete_Bob_user 		# Nombre de la tarea en nuestro playbook.
+      user:   			# Este es el módulo que vamos a utilizar para eliminar usuarios.  
+        name: Bob     # Nombre del usuario que vamos a eliminar.
+        state: absent  # Esta opción indica al módulo de Ansible que queremos eliminar al usuario en cuestión.

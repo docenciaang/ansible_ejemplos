@@ -1,0 +1,8 @@
+---
+- name: apagar todos los ordenadores
+  hosts: vm
+  become: true   
+  tasks:
+    - name: Apagado en 30 segundos
+      community.general.shutdown:
+        delay: 60

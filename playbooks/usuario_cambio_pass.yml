@@ -1,10 +1,13 @@
---
+---
 - hosts: etg
   become: yes
   tasks:
     - name: Crear un usuario
       user:
         name: nombre_de_usuario
+        update_password: always 
         password: "{{ 'password123' | password_hash('sha512') }}"  # Esta línea es para establecer una contraseña segura.
         shell: /bin/bash
-        
+
+#Para la clave se puede usar mkpasswd --method=SHA-512,  que pide la clave y 
+# entrega codificada
