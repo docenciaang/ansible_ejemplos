@@ -1,0 +1,10 @@
+--
+- hosts: etg
+  become: yes
+  tasks:
+    - name: Crear un usuario
+      user:
+        name: nombre_de_usuario
+        password: "{{ 'password123' | password_hash('sha512') }}"  # Esta línea es para establecer una contraseña segura.
+        shell: /bin/bash
+        
